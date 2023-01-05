@@ -42,7 +42,7 @@ jobs:
             working-directory: "doxygen"
             doxyfile-path: ../Docs/doxyfile_test
       - name: Copy doxygen stuff to _site
-        run: "mkdir -p ./_site/doxygen && cp -r ./doxygen ./_site/doxygen"
+        run: "pwd && ls -l && mkdir -p ./_site/doxygen && cp -r ./doxygen ./_site/doxygen"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 

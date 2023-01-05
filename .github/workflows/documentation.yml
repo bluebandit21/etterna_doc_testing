@@ -34,10 +34,13 @@ jobs:
         with:
           source: ./Docs/
           destination: ./_site
+      - name: Generate Doxygen output folder
+        run: "mkdir doxygen"
       - name: Build Doxygen
         uses: mattnotmitt/doxygen-action@v1.9.5
         with:
-            doxyfile-path: Docs/Doxyfile.in
+            working-directory: "doxygen"
+            doxyfile-path: ../Docs/Doxyfile.in
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 

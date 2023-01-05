@@ -1,5 +1,5 @@
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
-name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+# Workflow for building and deploying Etterna documentation
+name: Etterna documentation CI
 
 on:
   # Runs on pushes targeting the default branch
@@ -34,7 +34,7 @@ jobs:
         with:
             working-directory: "doxygen"
             doxyfile-path: ../Docs/doxyfile_test
-      - name: Copy doxygen stuff to _site
+      - name: Copy doxygen generated html to Docs
         run: "cp -r ./doxygen ./Docs/"
       - name: Setup Pages
         uses: actions/configure-pages@v2

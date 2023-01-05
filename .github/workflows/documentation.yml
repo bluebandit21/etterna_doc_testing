@@ -27,13 +27,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./Docs/
-          destination: ./_site
       - name: Generate Doxygen output folder
         run: "mkdir doxygen"
       - name: Build Doxygen
@@ -42,7 +35,14 @@ jobs:
             working-directory: "doxygen"
             doxyfile-path: ../Docs/doxyfile_test
       - name: Copy doxygen stuff to _site
-        run: "pwd && ls -l && mkdir -p ./_site/doxygen && cp -r ./doxygen ./_site/doxygen"
+        run: "pwd && ls -l && mkdir -p ./Docs/doxygen && cp -r ./doxygen ./Docs/doxygen"
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./Docs/
+          destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 

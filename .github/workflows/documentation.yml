@@ -34,6 +34,10 @@ jobs:
         with:
           source: ./Docs/
           destination: ./_site
+      - name: Build Doxygen
+        uses: mattnotmitt/doxygen-action@v1.9.5
+        with:
+            doxyfile-path: Docs/Doxyfile.in
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 

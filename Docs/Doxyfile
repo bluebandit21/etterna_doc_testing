@@ -1,5 +1,8 @@
 # Doxyfile 1.8.11
 
+# TODO: Generate the project number and existence/nonexistence of dot automatically
+# (Probably by leveraging CMake/Helpers/DocumentationTools.cmake ?)
+
 # General
 DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = Etterna

@@ -21,10 +21,16 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  #Doxygen build job
-  doxygen_build:
-  - name: Generate Doxygen output folder
-        run: "mkdir doxygen"
+  #Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Setup
+      - name: Checkout
+        uses: actions/checkout@v3
+      # Doxygen build
+      - name: Generate Doxygen output folder
+          run: "mkdir doxygen"
       - name: Build Doxygen
         uses: mattnotmitt/doxygen-action@v1.9.5
         with:
@@ -32,14 +38,7 @@ jobs:
             doxyfile-path: ../Docs/Doxyfile
       - name: Copy doxygen generated html to Docs
         run: "cp -r ./doxygen ./Docs/"
-
-  # Jekyll build job
-  jekyll_build:
-    needs: doxygen_build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      #Jekyll build
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Build with Jekyll
@@ -56,7 +55,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    needs: jekyll_build
+    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

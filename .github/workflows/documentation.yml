@@ -35,7 +35,7 @@ jobs:
             working-directory: "doxygen"
             doxyfile-path: ../Docs/doxyfile_test
       - name: Copy doxygen stuff to _site
-        run: "pwd && ls -l && mkdir -p ./Docs/doxygen && cp -r ./doxygen ./Docs/doxygen"
+        run: "cp -r ./doxygen ./Docs/"
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Build with Jekyll

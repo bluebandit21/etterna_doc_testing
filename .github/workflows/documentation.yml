@@ -40,7 +40,7 @@ jobs:
         uses: mattnotmitt/doxygen-action@v1.9.5
         with:
             working-directory: "doxygen"
-            doxyfile-path: ../Docs/Doxyfile.in
+            doxyfile-path: ../Docs/doxyfile_test
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
